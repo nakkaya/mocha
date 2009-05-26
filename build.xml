@@ -1,0 +1,130 @@
+<project name="mocha" default="all" basedir=".">
+
+    <description>
+      mocha build
+    </description>
+
+  <!-- set global properties for this build -->
+  <property name="build.dir" location="build"/>
+
+  <target name="extLibs">
+    <unzip dest="build/">
+      <fileset dir="extLibs/">
+        <include name="**/*.jar"/>
+      </fileset>
+    </unzip>
+    <delete dir="build/META-INF/"/>
+  </target>
+
+  <target name="preferences" depends="">
+    <javac srcdir="com/nakkaya/lib" includes="Defaults.java" destdir="${build.dir}"
+	   fork="yes"/>
+  </target>
+
+  <target name="network">
+    <javac srcdir="com/nakkaya/lib/network" destdir="${build.dir}"
+	   fork="yes"/>
+  </target>
+
+  <target name="arp">
+    <javac srcdir="com/nakkaya/lib/arp" destdir="${build.dir}"
+	   fork="yes"/>
+  </target>
+
+  <target name="tail">
+    <javac srcdir="com/nakkaya/lib/tail" destdir="${build.dir}"
+	   fork="yes"/>
+  </target>
+
+  <target name="mailer">
+    <javac srcdir="com/nakkaya/lib/mailer" destdir="${build.dir}"
+	   fork="yes"/>
+  </target>
+
+  <target name="gui" depends="preferences,arp , tail , network , extLibs , mailer">
+    <javac srcdir="com/nakkaya/gui" destdir="${build.dir}"
+	   fork="yes"/>
+  </target>
+
+  <!-- mac only classes -->
+  <target name="macApplication" depends="gui">
+    <javac srcdir="com/nakkaya/mac" destdir="${build.dir}"
+	   fork="yes"/>
+  </target>
+
+  <!-- java 6 features -->
+  <target name="tray" depends="gui">
+    <javac srcdir="com/nakkaya/tray" destdir="${build.dir}"
+	   fork="yes"/>
+  </target>
+
+  <target name="mocha" depends="gui ">
+    <javac srcdir="." includes="mocha.java" destdir="${build.dir}"
+	   fork="yes"/>
+    <copy todir="build/icons/">
+      <fileset dir="icons/"/>
+    </copy>
+  </target>
+
+  <target name="mac" depends="clean , mocha , macApplication">
+  </target>
+  <target name="linux" depends="clean , tray , mocha">
+  </target>
+
+  <target name="jar" depends="">
+    <jar destfile="build/mocha.jar" > 
+      <manifest>
+        <attribute name="Built-By" value="Nurullah Akkaya"/>
+        <attribute name="Main-Class" value="mocha"/>
+      </manifest>
+      <fileset dir="build">
+        <include name="**/*.class"/>
+	<include name="**/*.png"/>
+	<exclude name="**/*.jar"/>
+      </fileset>
+    </jar>
+  </target>
+
+  <target name="app" depends="mac , jar">
+    <mkdir dir="${build.dir}/Mocha.app" />
+    <mkdir dir="${build.dir}/Mocha.app/Contents/" />
+    <copy todir="${build.dir}/Mocha.app/Contents/">
+      <fileset dir="macApp/"/>
+    </copy>
+    <copy file="${build.dir}/mocha.jar" 
+	  todir="${build.dir}/Mocha.app/Contents/Resources/Java/"/>
+    <chmod file="${build.dir}/Mocha.app/Contents/MacOS/JavaApplicationStub" 
+	   perm="700"/>
+  </target>
+
+  <target name="dist" depends="app">
+    <exec dir="${build.dir}" executable="hdiutil">
+      <arg line="create -ov -srcfolder Mocha.app Mocha.dmg"/>
+    </exec>
+    <exec dir="${build.dir}" executable="hdiutil">
+      <arg line="internet-enable -yes Mocha.dmg"/>
+    </exec>
+  </target>
+
+<target name="zip" depends="clean">
+  <copy todir="${build.dir}/zip">
+    <fileset dir="../trunk">
+      <exclude name="**/.svn/**"/>
+    </fileset>
+  </copy>
+  <zip destfile="${build.dir}/source.zip"
+       basedir="${build.dir}/zip"/>
+</target>
+
+  <target name="clean" description="Clean Build">
+    <delete includeemptydirs="true">
+      <fileset dir="${build.dir}" 
+	       includes="**/*" 
+	       excludes="**/Icon*"/>
+    </delete>
+  </target>
+
+   <!-- End.              
+    -->
+</project>
+
