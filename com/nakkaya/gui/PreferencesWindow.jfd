@@ -261,7 +261,7 @@
           <string>javax.swing.JCheckBox</string> 
           <void method="setProperty"> 
            <string>text</string> 
-           <string>Send Warnings via E-Mail</string> 
+           <string>Send Notifications via E-Mail</string> 
           </void> 
           <void property="name"> 
            <string>sendMailWarningCheckBox</string> 

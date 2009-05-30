@@ -299,7 +299,7 @@ public class PreferencesWindow extends JFrame {
 			panel1.setBorder(new TitledBorder("SMTP Settings"));
 
 			//---- sendMailWarningCheckBox ----
-			sendMailWarningCheckBox.setText("Send Warnings via E-Mail");
+			sendMailWarningCheckBox.setText("Send Notifications via E-Mail");
 
 			//---- checkBox2 ----
 			checkBox2.setText("Use SSL");

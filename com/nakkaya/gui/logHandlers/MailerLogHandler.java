@@ -28,20 +28,27 @@ public class MailerLogHandler extends Handler {
 	if (!isLoggable(record))
 	    return;
 	
-	//process log
 	String message = record.getMessage();
 
-	//if warning message do not discard after 5 secs. 
+	// send new host message
+	if ( message.indexOf("New Host") >= 0 && 
+	     preferences.getBoolean
+	     ("mocha.suppress.newhost" ,
+	      Defaults.mocha_suppress_newhost) == false ){
+	    
+	    mailer.send(toFrom,toFrom,"Mocha: New Host", message);
+	}
+
+	//send arp change warning...
 	if ( message.matches("Warning.*?changed.*") == true ){
 
-	    //if changed to incomplete message check prefs
+	    //check to see user wants incompletes messages
 	    if ( message.matches(".*?\\(incomplete\\).*?") == true &&
 		 preferences.getBoolean
 		 ("mocha.suppress.incomplete" ,
 		  Defaults.mocha_suppress_incomplete)==true)
 		return;
 	    
-	    //do it
 	    mailer.send(toFrom,toFrom,"Mocha: Arp Change", message);
 
 	}
