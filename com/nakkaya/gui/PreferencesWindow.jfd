@@ -17,7 +17,7 @@
        </void> 
        <void method="setProperty"> 
         <string>$verticalGroup</string> 
-        <string>par l {seq l {space :::p, comp panel8:::p::p, space :::p, comp panel7:::p:123:p, space s:::p, comp panel1:::::x}}</string> 
+        <string>par l {seq l {space :::p, comp panel8:::p::p, space :::p, comp panel7:::p:123:p, space s:::p, comp panel1:::::x, space :::p}}</string> 
        </void> 
       </object> 
       <void method="setProperty"> 
@@ -239,7 +239,7 @@
          </void> 
          <void method="setProperty"> 
           <string>$verticalGroup</string> 
-          <string>par l {seq l {comp sendMailWarningCheckBox:::p::p, space u:::p, comp checkBox2:::p::p, space u:::p, par b {comp label1::b:p::p, comp serverNameField::b:p::p, comp label2::b:p::p, comp serverPortField::b:p::p}, space :::p, par b {comp label3::b:p::p, comp userNameField::b:p::p}, space u:::p, par b {comp label4::b:p::p, comp passWordField::b:p::p}, space s:::p, par b {comp label5::b:p::p, comp toFromField::b:p::p}, space ::31:x}}</string> 
+          <string>par l {seq l {comp sendMailWarningCheckBox:::p::p, space u:::p, comp checkBox2:::p::p, space u:::p, par b {comp label1::b:p::p, comp serverNameField::b:p::p, comp label2::b:p::p, comp serverPortField::b:p::p}, space :::p, par b {comp label3::b:p::p, comp userNameField::b:p::p}, space u:::p, par b {comp label4::b:p::p, comp passWordField::b:p::p}, space s:::p, par b {comp label5::b:p::p, comp toFromField::b:p::p}, space ::26:x}}</string> 
          </void> 
         </object> 
         <void method="setProperty"> 
@@ -407,7 +407,7 @@
        <string>size</string> 
        <object class="java.awt.Dimension"> 
         <int>450</int> 
-        <int>640</int> 
+        <int>655</int> 
        </object> 
       </void> 
      </object> 

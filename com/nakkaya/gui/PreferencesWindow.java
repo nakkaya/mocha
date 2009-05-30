@@ -376,7 +376,7 @@ public class PreferencesWindow extends JFrame {
 						.add(panel1Layout.createParallelGroup(GroupLayout.BASELINE)
 							.add(label5)
 							.add(toFromField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addContainerGap(31, Short.MAX_VALUE))
+						.addContainerGap(26, Short.MAX_VALUE))
 			);
 		}
 
@@ -400,7 +400,8 @@ public class PreferencesWindow extends JFrame {
 					.addPreferredGap(LayoutStyle.RELATED)
 					.add(panel7, GroupLayout.PREFERRED_SIZE, 123, GroupLayout.PREFERRED_SIZE)
 					.add(18, 18, 18)
-					.add(panel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.add(panel1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addContainerGap())
 		);
 		pack();
 		setLocationRelativeTo(getOwner());
