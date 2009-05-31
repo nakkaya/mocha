@@ -47,6 +47,13 @@ import javax.swing.JFileChooser;
 import java.net.URL;
 import java.awt.Image;
 
+import java.awt.event.KeyEvent;
+import javax.swing.KeyStroke;
+import javax.swing.Action;
+import java.awt.event.ActionEvent;
+import javax.swing.AbstractAction;
+import javax.swing.JComponent;
+
 /**
  * @author Nurullah Akkaya
  */
@@ -72,6 +79,7 @@ public class ApplicationWindow extends JFrame implements Observer {
 	setIconImage( image );
 
 	initComponents();
+	initKeyBindings();
 
 	arpTableModel = model;
 	network = ntwrk;
@@ -82,6 +90,30 @@ public class ApplicationWindow extends JFrame implements Observer {
 	setupArpLogPanel();
 	setupFirewallLogPanel();
 	
+    }
+
+    public void initKeyBindings(){
+
+	//os specific modifier key
+	int modifierKey = java.awt.event.InputEvent.ALT_MASK;
+	if (preferences.get( "mocha.operatingSystem"
+			     , Defaults.mocha_operatingSystem )
+	    .equals("OSX") == true ){
+
+	    modifierKey = java.awt.event.InputEvent.META_MASK;
+	}
+
+	//bind command + w
+	KeyStroke altW = KeyStroke.getKeyStroke
+	    (KeyEvent.VK_W,modifierKey,false);
+
+	Action alt_W_Action = new AbstractAction(){
+		public void actionPerformed(ActionEvent e){
+		    setVisible( false );
+		}
+	    };
+	tabbedPane.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(altW, "ALT_W");
+	tabbedPane.getActionMap().put("ALT_W", alt_W_Action);
     }
 
     public void setupNetworkPanel(){
@@ -214,7 +246,7 @@ public class ApplicationWindow extends JFrame implements Observer {
 
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-		tabbedPane1 = new JTabbedPane();
+		tabbedPane = new JTabbedPane();
 		panel1 = new JPanel();
 		panel9 = new JPanel();
 		panel6 = new JPanel();
@@ -248,7 +280,7 @@ public class ApplicationWindow extends JFrame implements Observer {
 		setTitle("Mocha");
 		Container contentPane = getContentPane();
 
-		//======== tabbedPane1 ========
+		//======== tabbedPane ========
 		{
 
 			//======== panel1 ========
@@ -433,7 +465,7 @@ public class ApplicationWindow extends JFrame implements Observer {
 							.addContainerGap())
 				);
 			}
-			tabbedPane1.addTab("Network", panel1);
+			tabbedPane.addTab("Network", panel1);
 
 
 			//======== panel2 ========
@@ -460,7 +492,7 @@ public class ApplicationWindow extends JFrame implements Observer {
 							.addContainerGap())
 				);
 			}
-			tabbedPane1.addTab("Arp Table", panel2);
+			tabbedPane.addTab("Arp Table", panel2);
 
 
 			//======== panel3 ========
@@ -487,7 +519,7 @@ public class ApplicationWindow extends JFrame implements Observer {
 							.addContainerGap())
 				);
 			}
-			tabbedPane1.addTab("Arp Log", panel3);
+			tabbedPane.addTab("Arp Log", panel3);
 
 
 			//======== panel4 ========
@@ -514,7 +546,7 @@ public class ApplicationWindow extends JFrame implements Observer {
 							.addContainerGap())
 				);
 			}
-			tabbedPane1.addTab("Firewall Log", panel4);
+			tabbedPane.addTab("Firewall Log", panel4);
 
 		}
 
@@ -524,14 +556,14 @@ public class ApplicationWindow extends JFrame implements Observer {
 			contentPaneLayout.createParallelGroup()
 				.add(contentPaneLayout.createSequentialGroup()
 					.addContainerGap()
-					.add(tabbedPane1, GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
+					.add(tabbedPane, GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		contentPaneLayout.setVerticalGroup(
 			contentPaneLayout.createParallelGroup()
 				.add(contentPaneLayout.createSequentialGroup()
 					.addContainerGap()
-					.add(tabbedPane1)
+					.add(tabbedPane)
 					.addContainerGap())
 		);
 		pack();
@@ -540,7 +572,7 @@ public class ApplicationWindow extends JFrame implements Observer {
 	}
 
 	// JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-	private JTabbedPane tabbedPane1;
+	private JTabbedPane tabbedPane;
 	private JPanel panel1;
 	private JPanel panel9;
 	private JPanel panel6;
