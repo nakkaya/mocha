@@ -267,7 +267,7 @@ public class PreferencesWindow extends JFrame {
 			suppressNewHostMessagesCheckBox.setText("Suppress New Host Messages");
 
 			//---- notifyFirewallCheckBox ----
-			notifyFirewallCheckBox.setText("Notify Firewall Activity");
+			notifyFirewallCheckBox.setText("Notify Firewall Activity (Requires Restart)");
 
 			GroupLayout panel7Layout = new GroupLayout(panel7);
 			panel7.setLayout(panel7Layout);
@@ -299,7 +299,7 @@ public class PreferencesWindow extends JFrame {
 			panel1.setBorder(new TitledBorder("SMTP Settings"));
 
 			//---- sendMailWarningCheckBox ----
-			sendMailWarningCheckBox.setText("Send Notifications via E-Mail");
+			sendMailWarningCheckBox.setText("Send Notifications via E-Mail (Requires Restart)");
 
 			//---- checkBox2 ----
 			checkBox2.setText("Use SSL");

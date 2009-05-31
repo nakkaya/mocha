@@ -219,7 +219,7 @@
           <string>javax.swing.JCheckBox</string> 
           <void method="setProperty"> 
            <string>text</string> 
-           <string>Notify Firewall Activity</string> 
+           <string>Notify Firewall Activity (Requires Restart)</string> 
           </void> 
           <void property="name"> 
            <string>notifyFirewallCheckBox</string> 
@@ -261,7 +261,7 @@
           <string>javax.swing.JCheckBox</string> 
           <void method="setProperty"> 
            <string>text</string> 
-           <string>Send Notifications via E-Mail</string> 
+           <string>Send Notifications via E-Mail (Requires Restart)</string> 
           </void> 
           <void property="name"> 
            <string>sendMailWarningCheckBox</string> 
