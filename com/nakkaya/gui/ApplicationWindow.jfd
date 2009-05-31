@@ -13,11 +13,11 @@
        <class>org.jdesktop.layout.GroupLayout</class> 
        <void method="setProperty"> 
         <string>$horizontalGroup</string> 
-        <string>par l {seq l {space :::p, comp tabbedPane1::::512:x, space :::p}}</string> 
+        <string>par l {seq l {space :::p, comp tabbedPane::::512:x, space :::p}}</string> 
        </void> 
        <void method="setProperty"> 
         <string>$verticalGroup</string> 
-        <string>par l {seq l {space :::p, comp tabbedPane1:::::x, space :::p}}</string> 
+        <string>par l {seq l {space :::p, comp tabbedPane:::::x, space :::p}}</string> 
        </void> 
       </object> 
       <void method="setProperty"> 
@@ -31,7 +31,7 @@
          <class>javax.swing.JTabbedPane</class> 
         </object> 
         <void property="name"> 
-         <string>tabbedPane1</string> 
+         <string>tabbedPane</string> 
         </void> 
         <void method="add"> 
          <object class="com.jformdesigner.model.FormContainer"> 
