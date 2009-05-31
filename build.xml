@@ -41,7 +41,7 @@
 	   fork="yes"/>
   </target>
 
-  <target name="gui" depends="preferences,arp , tail , network , extLibs , mailer">
+  <target name="gui" depends="extLibs, preferences, arp , tail , network , mailer">
     <javac srcdir="com/nakkaya/gui" destdir="${build.dir}"
 	   fork="yes"/>
   </target>
@@ -97,7 +97,7 @@
 	   perm="700"/>
   </target>
 
-  <target name="dist" depends="app">
+  <target name="distDarwin" depends="app">
     <exec dir="${build.dir}" executable="hdiutil">
       <arg line="create -ov -srcfolder Mocha.app Mocha.dmg"/>
     </exec>
@@ -106,15 +106,8 @@
     </exec>
   </target>
 
-<target name="zip" depends="clean">
-  <copy todir="${build.dir}/zip">
-    <fileset dir="../trunk">
-      <exclude name="**/.svn/**"/>
-    </fileset>
-  </copy>
-  <zip destfile="${build.dir}/source.zip"
-       basedir="${build.dir}/zip"/>
-</target>
+  <target name="distLinux" depends="linux,jar">
+  </target>
 
   <target name="clean" description="Clean Build">
     <delete includeemptydirs="true">
