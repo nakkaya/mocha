@@ -93,41 +93,49 @@ public class SlideInNotification extends Object {
 	    add( label );
 	}
 
-	//create a two line 80 char text from string
+	//create a two line 70 char text from string
 	public String wrapText( String message ){
 	    try{
 		StringBuilder buffer = new StringBuilder();
 		buffer.append("<html><FONT COLOR=\"FFFF00\">Info</font><br>");
 
-		int lineLength = 38;
+		//number of charecter that fit in to the window.
+		int lineLength = 35;
+
+		//if fits as is just return. 
 		if (message.length() <= lineLength ){
 		    buffer.append( message );
 		    return buffer.toString();
 		}
-	    
+
 		//grab first line
-		String tmpLine =  message.substring( 0 , lineLength );    
-		//locate last space
+		String tmpLine =  message.substring( 0 , lineLength );
+
+		//locate last space in first line
 		int indexLastSpace = tmpLine.lastIndexOf( " " );
+		//get line up to space
 		tmpLine =  message.substring( 0 , indexLastSpace );
 		buffer.append( tmpLine );
-
-		if ( message.length() > lineLength ){
 		
-		    buffer.append("<br>");
-		    //grab second line
-		    int endIndex = indexLastSpace + lineLength ;
-		    if ( indexLastSpace+lineLength > message.length() )
-			endIndex = message.length();
+		buffer.append("<br>");
 
-		    tmpLine = message.substring
-			( indexLastSpace , endIndex );
-		    //locate last space
-		    indexLastSpace = tmpLine.lastIndexOf( " " );
-		    //cut line
-		    buffer.append( tmpLine.substring( 0 , indexLastSpace) );
-		}
+		//grab second line
+		int endIndex = indexLastSpace + lineLength ;
+		if ( indexLastSpace+lineLength > message.length() )
+		    endIndex = message.length();
+		
+		tmpLine = message.substring
+		    ( indexLastSpace , endIndex );
 
+		//locate last space in second line
+		indexLastSpace = tmpLine.lastIndexOf( " " );
+		if ( indexLastSpace == 0 )
+		    indexLastSpace = tmpLine.length();
+
+
+		//cut line
+		buffer.append( tmpLine.substring( 0 , indexLastSpace) );
+		
 		return buffer.toString();
 	    }catch( Exception e ) { 
 		SysLogger.info( e.toString() );
@@ -155,7 +163,6 @@ public class SlideInNotification extends Object {
 	    }
 	    
 	    message = wrapText( message );
-	    System.out.println( "process " + message );
 	    return message;
 	}
 

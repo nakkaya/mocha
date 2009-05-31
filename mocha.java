@@ -22,6 +22,8 @@ import com.nakkaya.lib.mailer.*;
 import com.nakkaya.gui.*;
 import com.nakkaya.lib.Defaults;
 
+import com.nakkaya.gui.logHandler.*;
+
 class mocha {
 
     static Preferences preferences = Preferences.userRoot();
@@ -143,7 +145,7 @@ class mocha {
 	    Thread thread = new Thread( arpWatcher , "ArpWathcer");
 	    thread.setName("ArpWatcher");
 	    thread.start();
-
+	    
 	}catch( Exception e ) { 
 	    sysLogger.warning( e.toString() );
 	}
