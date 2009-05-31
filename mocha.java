@@ -92,7 +92,7 @@ class mocha {
 	    //set to exit on unavaible tray
 	    applicationWindow.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 	    Class klass = Class.forName("com.nakkaya.tray.SysTray");
-	    Class[] paramTypes = { JFrame.class };
+	    Class[] paramTypes = { ApplicationWindow.class };
 	    Constructor cons = klass.getConstructor(paramTypes);
 	    
 	    Object[] args = { applicationWindow };		
@@ -116,9 +116,7 @@ class mocha {
 	    ArpTable arpTable = new ArpTable();
 	    //start arp watcher thread
 	    ArpWatcher arpWatcher = new ArpWatcher( arpTable );
-	    Thread thread = new Thread( arpWatcher , "ArpWathcer");
-	    thread.setName("ArpWatcher");
-	    thread.start();
+
 
 	    NetworkWatcher network = new NetworkWatcher();
 
@@ -131,7 +129,6 @@ class mocha {
  	    applicationWindow.setLocationRelativeTo( null );
  	    applicationWindow.setVisible( true );
 
-
 	    setupFirewallTailer();
 
 	    //load OS specific features.
@@ -142,6 +139,10 @@ class mocha {
 	    if (preferences.get("mocha.operatingSystem" ,Defaults.mocha_operatingSystem).equals( "Linux" ) == true ){
 	    	setupSysTray(applicationWindow);
 	    }
+
+	    Thread thread = new Thread( arpWatcher , "ArpWathcer");
+	    thread.setName("ArpWatcher");
+	    thread.start();
 
 	}catch( Exception e ) { 
 	    sysLogger.warning( e.toString() );

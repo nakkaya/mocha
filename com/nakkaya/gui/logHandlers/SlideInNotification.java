@@ -84,7 +84,8 @@ public class SlideInNotification extends Object {
 	    add(Box.createRigidArea( new Dimension ( 10 , 0)));
 
 	    //message
-	    JLabel label = new JLabel ( processMessage(message) ,
+	    message = processMessage(message);
+	    JLabel label = new JLabel ( message ,
 				       SwingConstants.LEFT);
 	    label.setForeground(Color.white);
 	    setPreferredSize(new Dimension( 270 , 60 ));
@@ -95,7 +96,6 @@ public class SlideInNotification extends Object {
 	//create a two line 80 char text from string
 	public String wrapText( String message ){
 	    try{
-		
 		StringBuilder buffer = new StringBuilder();
 		buffer.append("<html><FONT COLOR=\"FFFF00\">Info</font><br>");
 
@@ -155,6 +155,7 @@ public class SlideInNotification extends Object {
 	    }
 	    
 	    message = wrapText( message );
+	    System.out.println( "process " + message );
 	    return message;
 	}
 

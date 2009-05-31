@@ -102,9 +102,7 @@ public class LogFileTailer extends Thread {
       // Close the file that we are tailing
       file.close();
     }catch( Exception e ) {
-	System.out.println("messa " + e.getMessage() );
 	firewallLogger.info( e.getMessage() );
-	e.printStackTrace();
     }
   }
 }
