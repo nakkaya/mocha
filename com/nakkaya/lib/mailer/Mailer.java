@@ -46,14 +46,23 @@ public class Mailer{
 
 	props.put("mail.smtp.user", userName);
 
-	props.put("mail.smtp.starttls.enable","true");
 	props.put("mail.smtp.auth", "true");
 
-	props.put("mail.smtp.socketFactory.port",
-		  preferences.getInt( "mocha.smtp.port", Defaults.mocha_smtp_port ));
+	bool useSSL = preferences.getBoolean
+	    ("mocha.notify.mail.use.SSL",Defaults.mocha_notify_mail_use_SSL);
 
-	props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-	props.put("mail.smtp.socketFactory.fallback", "false");
+	props.put("mail.smtp.socketFactory.port",
+		  preferences.getInt
+		  ( "mocha.smtp.port", Defaults.mocha_smtp_port ));
+
+	if ( useSSL == true ){	    
+	    props.put("mail.smtp.starttls.enable","true");
+
+	    props.put("mail.smtp.socketFactory.class", 
+		      "javax.net.ssl.SSLSocketFactory");
+
+	    props.put("mail.smtp.socketFactory.fallback", "false");
+	}
 
 	authenticator = new SMTPAuthenticator( userName , passWord );
     }
