@@ -13,6 +13,7 @@ public class Defaults{
 
 
     public static final boolean mocha_notify_mail = false;
+    public static final boolean mocha_notify_mail_use_SSL = true;
     public static final String mocha_smtp_server = "";
     public static final int mocha_smtp_port = 465;
     public static final String mocha_smtp_username = "";

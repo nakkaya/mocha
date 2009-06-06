@@ -82,6 +82,9 @@ public class PreferencesWindow extends JFrame {
 	preferences.putBoolean( "mocha.notify.mail", 
 				sendMailWarningCheckBox.isSelected() );
 
+	preferences.putBoolean( "mocha.notify.mail.use.SSL",
+				mailUseSSL.isSelected() );
+
 	preferences.put( "mocha.smtp.server", serverNameField.getText() );
 
 	int serverPort = Defaults.mocha_smtp_port;
@@ -101,17 +104,20 @@ public class PreferencesWindow extends JFrame {
     }
 
     public void loadPreferences(){
-	Integer tmpValue = preferences.getInt( "mocha.arp.interval", Defaults.mocha_arp_interval );
+	Integer tmpValue = preferences.getInt
+	    ( "mocha.arp.interval", Defaults.mocha_arp_interval );
 	arpRefreshIntervalField.setText( tmpValue.toString() );
 
 	boolean bool = preferences.getBoolean
 	    ("mocha.notify.firewall" , Defaults.mocha_notify_firewall);
 	notifyFirewallCheckBox.setSelected( bool );
 
-	String tmpString = preferences.get( "mocha.arp.command", Defaults.mocha_arp_command );
+	String tmpString = preferences.get
+	    ( "mocha.arp.command", Defaults.mocha_arp_command );
 	arpCommandField.setText( tmpString );
 
-	tmpString = preferences.get( "mocha.firewall.log", Defaults.mocha_firewall_log );
+	tmpString = preferences.get
+	    ( "mocha.firewall.log", Defaults.mocha_firewall_log );
 	logFileField.setText( tmpString );
 
 	tmpValue = preferences.getInt
@@ -129,6 +135,10 @@ public class PreferencesWindow extends JFrame {
 	bool = preferences.getBoolean
 	    ("mocha.notify.mail",Defaults.mocha_notify_mail);
 	sendMailWarningCheckBox.setSelected(bool);
+
+	bool = preferences.getBoolean
+	    ("mocha.notify.mail.use.SSL",Defaults.mocha_notify_mail_use_SSL);
+	mailUseSSL.setSelected(bool);
 
 	tmpString = preferences.get( "mocha.smtp.server", Defaults.mocha_smtp_server );
 	serverNameField.setText( tmpString );
@@ -167,7 +177,7 @@ public class PreferencesWindow extends JFrame {
 		notifyFirewallCheckBox = new JCheckBox();
 		panel1 = new JPanel();
 		sendMailWarningCheckBox = new JCheckBox();
-		checkBox2 = new JCheckBox();
+		mailUseSSL = new JCheckBox();
 		label1 = new JLabel();
 		serverNameField = new JTextField();
 		label3 = new JLabel();
@@ -279,7 +289,7 @@ public class PreferencesWindow extends JFrame {
 							.add(notifyFirewallCheckBox)
 							.add(suppressIncompleteWarningCheckBox)
 							.add(suppressNewHostMessagesCheckBox))
-						.addContainerGap(160, Short.MAX_VALUE))
+						.addContainerGap(96, Short.MAX_VALUE))
 			);
 			panel7Layout.setVerticalGroup(
 				panel7Layout.createParallelGroup()
@@ -301,10 +311,9 @@ public class PreferencesWindow extends JFrame {
 			//---- sendMailWarningCheckBox ----
 			sendMailWarningCheckBox.setText("Send Notifications via E-Mail (Requires Restart)");
 
-			//---- checkBox2 ----
-			checkBox2.setText("Use SSL");
-			checkBox2.setSelected(true);
-			checkBox2.setEnabled(false);
+			//---- mailUseSSL ----
+			mailUseSSL.setText("Use SSL");
+			mailUseSSL.setSelected(true);
 
 			//---- label1 ----
 			label1.setText("Server:");
@@ -329,7 +338,7 @@ public class PreferencesWindow extends JFrame {
 						.addContainerGap()
 						.add(panel1Layout.createParallelGroup()
 							.add(sendMailWarningCheckBox)
-							.add(checkBox2)
+							.add(mailUseSSL)
 							.add(panel1Layout.createSequentialGroup()
 								.add(panel1Layout.createParallelGroup()
 									.add(label3)
@@ -357,7 +366,7 @@ public class PreferencesWindow extends JFrame {
 					.add(panel1Layout.createSequentialGroup()
 						.add(sendMailWarningCheckBox)
 						.addPreferredGap(LayoutStyle.UNRELATED)
-						.add(checkBox2)
+						.add(mailUseSSL)
 						.addPreferredGap(LayoutStyle.UNRELATED)
 						.add(panel1Layout.createParallelGroup(GroupLayout.BASELINE)
 							.add(label1)
@@ -426,7 +435,7 @@ public class PreferencesWindow extends JFrame {
 	private JCheckBox notifyFirewallCheckBox;
 	private JPanel panel1;
 	private JCheckBox sendMailWarningCheckBox;
-	private JCheckBox checkBox2;
+	private JCheckBox mailUseSSL;
 	private JLabel label1;
 	private JTextField serverNameField;
 	private JLabel label3;

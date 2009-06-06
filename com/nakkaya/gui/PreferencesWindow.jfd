@@ -169,7 +169,7 @@
          <class>org.jdesktop.layout.GroupLayout</class> 
          <void method="setProperty"> 
           <string>$horizontalGroup</string> 
-          <string>par l {seq {space :::p, par l {comp notifyFirewallCheckBox::l:p::p, comp suppressIncompleteWarningCheckBox::l:p::p, comp suppressNewHostMessagesCheckBox::l:p::p}, space ::160:x}}</string> 
+          <string>par l {seq {space :::p, par l {comp notifyFirewallCheckBox::l:p::p, comp suppressIncompleteWarningCheckBox::l:p::p, comp suppressNewHostMessagesCheckBox::l:p::p}, space ::96:x}}</string> 
          </void> 
          <void method="setProperty"> 
           <string>$verticalGroup</string> 
@@ -235,11 +235,11 @@
          <class>org.jdesktop.layout.GroupLayout</class> 
          <void method="setProperty"> 
           <string>$horizontalGroup</string> 
-          <string>par l {seq {space :::p, par l {comp sendMailWarningCheckBox::l:p::p, comp checkBox2::l:p::p, seq l {par l {comp label3::l:p::p, comp label1::l:p::p}, space :::p, par l {par t:l::p {comp passWordField::l:::x:1, comp userNameField::l:p:115:p}, seq t {par t {comp toFromField::l::208:x, comp serverNameField::t::208:x}, space :::p, comp label2:::p::p, space :::p, comp serverPortField:::p:33:p, space :p:10:p}}}, comp label4::l:p::p, comp label5::l:p::p}, space :::p}}</string> 
+          <string>par l {seq {space :::p, par l {comp sendMailWarningCheckBox::l:p::p, comp mailUseSSL::l:p::p, seq l {par l {comp label3::l:p::p, comp label1::l:p::p}, space :::p, par l {par t:l::p {comp passWordField::l:::x:1, comp userNameField::l:p:115:p}, seq t {par t {comp toFromField::l::208:x, comp serverNameField::t::208:x}, space :::p, comp label2:::p::p, space :::p, comp serverPortField:::p:33:p, space :p:10:p}}}, comp label4::l:p::p, comp label5::l:p::p}, space :::p}}</string> 
          </void> 
          <void method="setProperty"> 
           <string>$verticalGroup</string> 
-          <string>par l {seq l {comp sendMailWarningCheckBox:::p::p, space u:::p, comp checkBox2:::p::p, space u:::p, par b {comp label1::b:p::p, comp serverNameField::b:p::p, comp label2::b:p::p, comp serverPortField::b:p::p}, space :::p, par b {comp label3::b:p::p, comp userNameField::b:p::p}, space u:::p, par b {comp label4::b:p::p, comp passWordField::b:p::p}, space s:::p, par b {comp label5::b:p::p, comp toFromField::b:p::p}, space ::26:x}}</string> 
+          <string>par l {seq l {comp sendMailWarningCheckBox:::p::p, space u:::p, comp mailUseSSL:::p::p, space u:::p, par b {comp label1::b:p::p, comp serverNameField::b:p::p, comp label2::b:p::p, comp serverPortField::b:p::p}, space :::p, par b {comp label3::b:p::p, comp userNameField::b:p::p}, space u:::p, par b {comp label4::b:p::p, comp passWordField::b:p::p}, space s:::p, par b {comp label5::b:p::p, comp toFromField::b:p::p}, space ::26:x}}</string> 
          </void> 
         </object> 
         <void method="setProperty"> 
@@ -279,12 +279,8 @@
            <string>selected</string> 
            <boolean>true</boolean> 
           </void> 
-          <void method="setProperty"> 
-           <string>enabled</string> 
-           <boolean>false</boolean> 
-          </void> 
           <void property="name"> 
-           <string>checkBox2</string> 
+           <string>mailUseSSL</string> 
           </void> 
          </object> 
         </void> 
