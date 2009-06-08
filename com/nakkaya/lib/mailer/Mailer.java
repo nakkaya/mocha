@@ -48,7 +48,7 @@ public class Mailer{
 
 	props.put("mail.smtp.auth", "true");
 
-	bool useSSL = preferences.getBoolean
+	boolean useSSL = preferences.getBoolean
 	    ("mocha.notify.mail.use.SSL",Defaults.mocha_notify_mail_use_SSL);
 
 	props.put("mail.smtp.socketFactory.port",
