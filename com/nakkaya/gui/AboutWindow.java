@@ -46,7 +46,7 @@ public class AboutWindow extends JFrame {
 		label2.setFont(new Font("Arial", Font.BOLD, 20));
 
 		//---- label3 ----
-		label3.setText("v 1.1.0");
+		label3.setText("v 1.1.1");
 		label3.setFont(new Font("Arial", Font.PLAIN, 20));
 
 		//---- label4 ----
