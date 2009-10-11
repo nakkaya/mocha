@@ -1,10 +1,12 @@
 package com.nakkaya.gui;
 
 import java.awt.Container;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import org.jdesktop.layout.GroupLayout;
 import org.jdesktop.layout.LayoutStyle;
@@ -25,11 +27,13 @@ public class AboutWindow extends JFrame {
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
 		label1 = new JLabel();
-		label2 = new JLabel();
-		label3 = new JLabel();
+		panel1 = new JPanel();
 		label4 = new JLabel();
 		label5 = new JLabel();
 		label6 = new JLabel();
+		panel2 = new JPanel();
+		label2 = new JLabel();
+		label3 = new JLabel();
 
 		//======== this ========
 		setResizable(false);
@@ -41,63 +45,64 @@ public class AboutWindow extends JFrame {
 		label1.setVerticalAlignment(SwingConstants.BOTTOM);
 		label1.setHorizontalAlignment(SwingConstants.LEFT);
 
-		//---- label2 ----
-		label2.setText("Mocha");
-		label2.setFont(new Font("Arial", Font.BOLD, 20));
+		//======== panel1 ========
+		{
+			panel1.setLayout(new FlowLayout());
 
-		//---- label3 ----
-		label3.setText("v 1.1.1");
-		label3.setFont(new Font("Arial", Font.PLAIN, 20));
+			//---- label4 ----
+			label4.setText("<html><a href=\"http://nakkaya.com/Mocha.html\">http://nakkaya.com/</a></html>");
+			panel1.add(label4);
 
-		//---- label4 ----
-		label4.setText("<html><a href=\"http://nakkaya.com/Mocha.html\">http://nakkaya.com/Mocha.html</a></html>");
+			//---- label5 ----
+			label5.setText("Nurullah Akkaya");
+			panel1.add(label5);
 
-		//---- label5 ----
-		label5.setText("Nurullah Akkaya");
+			//---- label6 ----
+			label6.setText("<html><a href=\"mailto:nurullah@nakkaya.com\">nurullah@nakkaya.com</a></html>");
+			panel1.add(label6);
+		}
 
-		//---- label6 ----
-		label6.setText("<html><a href=\"mailto:nurullah@nakkaya.com\">nurullah@nakkaya.com</a></html>");
+		//======== panel2 ========
+		{
+			panel2.setLayout(new FlowLayout());
+
+			//---- label2 ----
+			label2.setText("Mocha");
+			label2.setFont(new Font("Arial", Font.BOLD, 20));
+			panel2.add(label2);
+
+			//---- label3 ----
+			label3.setText("v 1.1.1");
+			label3.setFont(new Font("Arial", Font.PLAIN, 20));
+			panel2.add(label3);
+		}
 
 		GroupLayout contentPaneLayout = new GroupLayout(contentPane);
 		contentPane.setLayout(contentPaneLayout);
 		contentPaneLayout.setHorizontalGroup(
 			contentPaneLayout.createParallelGroup()
 				.add(contentPaneLayout.createSequentialGroup()
+					.addContainerGap()
 					.add(contentPaneLayout.createParallelGroup()
 						.add(contentPaneLayout.createSequentialGroup()
-							.addContainerGap()
+							.add(24, 24, 24)
+							.add(panel1, GroupLayout.PREFERRED_SIZE, 185, GroupLayout.PREFERRED_SIZE))
+						.add(contentPaneLayout.createSequentialGroup()
 							.add(label1)
-							.add(18, 18, 18)
-							.add(contentPaneLayout.createParallelGroup()
-								.add(label2)
-								.add(label3)))
-						.add(contentPaneLayout.createSequentialGroup()
-							.add(73, 73, 73)
-							.add(label5))
-						.add(contentPaneLayout.createSequentialGroup()
-							.add(33, 33, 33)
-							.add(label4))
-						.add(contentPaneLayout.createSequentialGroup()
-							.add(52, 52, 52)
-							.add(label6)))
-					.addContainerGap(27, Short.MAX_VALUE))
+							.addPreferredGap(LayoutStyle.RELATED)
+							.add(panel2, GroupLayout.PREFERRED_SIZE, 95, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		contentPaneLayout.setVerticalGroup(
 			contentPaneLayout.createParallelGroup()
 				.add(contentPaneLayout.createSequentialGroup()
-					.add(30, 30, 30)
+					.addContainerGap()
 					.add(contentPaneLayout.createParallelGroup()
-						.add(label2)
-						.add(contentPaneLayout.createParallelGroup(GroupLayout.BASELINE)
-							.add(label1, GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE)
-							.add(label3)))
-					.addPreferredGap(LayoutStyle.RELATED)
-					.add(label4)
-					.add(18, 18, 18)
-					.add(label5)
-					.addPreferredGap(LayoutStyle.RELATED)
-					.add(label6)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.add(label1, GroupLayout.PREFERRED_SIZE, 118, GroupLayout.PREFERRED_SIZE)
+						.add(panel2, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(LayoutStyle.UNRELATED)
+					.add(panel1, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(19, Short.MAX_VALUE))
 		);
 		pack();
 		setLocationRelativeTo(getOwner());
@@ -106,10 +111,12 @@ public class AboutWindow extends JFrame {
 
 	// JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
 	private JLabel label1;
-	private JLabel label2;
-	private JLabel label3;
+	private JPanel panel1;
 	private JLabel label4;
 	private JLabel label5;
 	private JLabel label6;
+	private JPanel panel2;
+	private JLabel label2;
+	private JLabel label3;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables
 }
