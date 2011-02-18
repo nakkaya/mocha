@@ -142,8 +142,7 @@ class mocha {
 	    	setupSysTray(applicationWindow);
 	    }
 
-	    Thread thread = new Thread( arpWatcher , "ArpWathcer");
-	    thread.setName("ArpWatcher");
+	    Thread thread = new Thread( arpWatcher , "ArpWatcher");
 	    thread.start();
 	    
 	}catch( Exception e ) { 
