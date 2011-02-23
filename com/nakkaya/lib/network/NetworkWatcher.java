@@ -101,9 +101,10 @@ public class NetworkWatcher extends Observable{
 	    Enumeration nifAddresses = nif.getInetAddresses();
 	    InetAddress inet = (InetAddress)nifAddresses.nextElement();
 	    
-	    if ( preferences.get
+	    if (( preferences.get
 		 ("mocha.operatingSystem",
 		  Defaults.mocha_operatingSystem ).equals( "Linux" ) == true)
+		  && nifAddresses.hasMoreElements())
 		inet = (InetAddress)nifAddresses.nextElement();
 
 	    localIP = inet.getHostAddress();
