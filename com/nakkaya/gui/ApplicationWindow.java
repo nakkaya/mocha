@@ -44,7 +44,7 @@ import com.nakkaya.lib.Defaults;
 import com.nakkaya.lib.arp.*;
 import com.nakkaya.lib.network.*;
 import com.nakkaya.lib.mailer.*;
-import com.nakkaya.gui.logHandler.*;
+import com.nakkaya.gui.logHandlers.*;
 
 import javax.swing.ListSelectionModel;
 import java.awt.Dimension;

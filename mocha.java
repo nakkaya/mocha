@@ -37,7 +37,7 @@ import com.nakkaya.lib.mailer.*;
 import com.nakkaya.gui.*;
 import com.nakkaya.lib.Defaults;
 
-import com.nakkaya.gui.logHandler.*;
+import com.nakkaya.gui.logHandlers.*;
 
 class mocha {
 

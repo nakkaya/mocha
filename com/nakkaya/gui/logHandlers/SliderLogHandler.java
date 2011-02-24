@@ -13,7 +13,7 @@
 // You should have received a copy of the GNU General Public License
 // along with Mocha. If not, see http://www.gnu.org/licenses/.
 
-package com.nakkaya.gui.logHandler;
+package com.nakkaya.gui.logHandlers;
 
 import java.util.prefs.Preferences;
 import java.util.logging.LogRecord;
